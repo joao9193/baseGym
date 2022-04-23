@@ -15,9 +15,10 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v2
 
+      - run: cd ./functions
+
       - name: Set up Node.js
         uses: actions/setup-node@v1
-        run: cd ./functions
         with:
           node-version: 12
 
