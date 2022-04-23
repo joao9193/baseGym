@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-require('dotenv').config();
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require("dotenv").config();
 }
 
 const firebaseConfig = {
@@ -13,13 +13,14 @@ const firebaseConfig = {
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
     appId: process.env.FB_APP_ID,
     measurementId: process.env.MEASUREMENT_ID
-  };
+};
 
-//App has to be initialized before the getAuth() function is called in our other functions
+// App has to be initialized before the getAuth() function
+// is called in our other functions
 export const app = initializeApp(firebaseConfig);
 
-import users from './users/users';
+import users from "./users/users";
 
 export {
     users
-}
+};
