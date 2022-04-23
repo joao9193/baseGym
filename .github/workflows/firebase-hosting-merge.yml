@@ -24,15 +24,15 @@ jobs:
           eslint: true
           prettier: true
 
-  build_and_deploy:
-    name: Build and Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: cd ./functions && npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXALTED_GAMMA_347903 }}'
-          channelId: live
-          projectId: exalted-gamma-347903
+  # build_and_deploy:
+  #   name: Build and Deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: cd ./functions && npm ci && npm run build
+  #     - uses: FirebaseExtended/action-hosting-deploy@v0
+  #       with:
+  #         repoToken: '${{ secrets.GITHUB_TOKEN }}'
+  #         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXALTED_GAMMA_347903 }}'
+  #         channelId: live
+  #         projectId: exalted-gamma-347903
