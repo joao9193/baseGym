@@ -15,12 +15,19 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        run: cd ./functions
+        with:
+          node-version: 12
+
       - name: Installing Dependencies Functions directory
-        run: cd ./functions && npm ci
+        run: npm install
 
       - name: Run Lint in Functions directory
         uses: wearerequired/lint-action@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           eslint: true
           prettier: true
 
