@@ -24,7 +24,7 @@ jobs:
           node-version: 12
 
       - name: Installing Dependencies Functions directory
-        run: cd ./functions && npm install eslint prettier
+        run: cd ./functions && npm ci && cd ..
 
       - name: Run Lint in Functions directory
         uses: wearerequired/lint-action@v1
