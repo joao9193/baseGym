@@ -27,7 +27,6 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
           prettier: true
 
   # build_and_deploy:
