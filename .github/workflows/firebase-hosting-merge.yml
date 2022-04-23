@@ -15,15 +15,14 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v2
 
-      - run: cd ./functions
-
       - name: Set up Node.js
         uses: actions/setup-node@v1
+        run: cd ./functions
         with:
           node-version: 12
 
       - name: Installing Dependencies Functions directory
-        run: npm install
+        run: cd ./functions && npm ci
 
       - name: Run Lint in Functions directory
         uses: wearerequired/lint-action@v1
