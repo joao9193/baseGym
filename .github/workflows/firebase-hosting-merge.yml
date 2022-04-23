@@ -7,11 +7,25 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 jobs:
+  run-linters:
+    name: Run Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install linters in Functions directory
+        run: cd ./functions && npm ci
+
+      - name: Run Lint in Functions directory
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          prettier: true
+
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd ./functions && npm ci && npm run build
+      - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
