@@ -15,7 +15,7 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v2
 
-      - name: Install linters in Functions directory
+      - name: Installing Dependencies Functions directory
         run: cd ./functions && npm ci
 
       - name: Run Lint in Functions directory
