@@ -10,38 +10,17 @@ jobs:
   run-linters:
     name: Run Linters
     runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      contents: write
 
     steps:
-      - name: Code Checkout
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-
-      - name: Installing Dependencies Functions directory
-        run: cd ./functions && npm ci && cd ..
-
-      - name: Run Lint in Functions directory
-        uses: wearerequired/lint-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
-          prettier: true
-
-  # build_and_deploy:
-  #   name: Build and Deploy
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: cd ./functions && npm ci && npm run build
-  #     - uses: FirebaseExtended/action-hosting-deploy@v0
-  #       with:
-  #         repoToken: '${{ secrets.GITHUB_TOKEN }}'
-  #         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXALTED_GAMMA_347903 }}'
-  #         channelId: live
-  #         projectId: exalted-gamma-347903
+      build_and_deploy:
+        name: Build and Deploy
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - run: cd ./functions && npm ci && npm run build
+          - uses: FirebaseExtended/action-hosting-deploy@v0
+            with:
+              repoToken: '${{ secrets.GITHUB_TOKEN }}'
+              firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXALTED_GAMMA_347903 }}'
+              channelId: live
+              projectId: exalted-gamma-347903
