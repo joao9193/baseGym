@@ -10,6 +10,9 @@ jobs:
   run-linters:
     name: Run Linters
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: write
 
     steps:
       - name: Code Checkout
@@ -21,12 +24,13 @@ jobs:
           node-version: 12
 
       - name: Installing Dependencies Functions directory
-        run: cd ./functions && npm ci
+        run: cd ./functions && npm install eslint prettier
 
       - name: Run Lint in Functions directory
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          eslint: true
           prettier: true
 
   # build_and_deploy:
