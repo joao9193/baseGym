@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Install linters in Functions directory
-        run: cd ./functions && npm ci
+        run: npm ci
 
       - name: Run Lint in Functions directory
         uses: wearerequired/lint-action@v1
