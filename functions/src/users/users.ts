@@ -4,7 +4,7 @@ import { app } from "../index";
 
 const auth = firebaseAuth.getAuth(app);
 
-const createEmailUser = functions.https.onRequest((request, response) => {
+exports.createEmailUser = functions.https.onRequest((request, response) => {
     // functions.logger.info("Hello logs!", {structuredData: true});
     const { email, password } = request.body;
     firebaseAuth.createUserWithEmailAndPassword(auth, email, password)
@@ -21,7 +21,7 @@ const createEmailUser = functions.https.onRequest((request, response) => {
         });
 });
 
-const signInEmailUser = functions.https.onRequest((request, response) => {
+exports.signInEmailUser = functions.https.onRequest((request, response) => {
     const { email, password } = request.body;
     firebaseAuth.signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -37,7 +37,7 @@ const signInEmailUser = functions.https.onRequest((request, response) => {
         });
 });
 
-const getUserInfo = functions.https.onRequest((request, response) => {
+exports.getUserInfo = functions.https.onRequest((request, response) => {
     firebaseAuth.onAuthStateChanged(auth, (user) => {
         if (user) {
             response.status(200).send({ user: user });
@@ -47,7 +47,7 @@ const getUserInfo = functions.https.onRequest((request, response) => {
     });
 });
 
-const signoutUser = functions.https.onRequest((request, response) => {
+exports.signoutUser = functions.https.onRequest((request, response) => {
     firebaseAuth.signOut(auth)
         .then(() => {
             response.status(200).send({ message: "Successfully signed out" });
@@ -58,10 +58,3 @@ const signoutUser = functions.https.onRequest((request, response) => {
             response.status(400).send({ errorCode, errorMessage });
         });
 });
-
-export default {
-    createEmailUser,
-    signInEmailUser,
-    getUserInfo,
-    signoutUser
-};
