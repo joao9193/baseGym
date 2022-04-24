@@ -19,8 +19,4 @@ const firebaseConfig = {
 // is called in our other functions
 export const app = initializeApp(firebaseConfig);
 
-import users from "./users/users";
-
-export {
-    users
-};
+exports.users = require("./users/users");
