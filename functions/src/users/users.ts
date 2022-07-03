@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import * as firebaseAuth from "firebase/auth";
 import { app } from "../index";
+import * as messages from "./messages.json";
 
 const auth = firebaseAuth.getAuth(app);
 
@@ -10,7 +11,7 @@ exports.createEmailUser = functions.https.onRequest((request, response) => {
     firebaseAuth.createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             response.status(200).send({
-                message: "Successfully created email user",
+                message: messages.EMAIL_USER_CREATE_SUCCESS,
                 user: userCredential.user
             });
         })
@@ -26,7 +27,7 @@ exports.signInEmailUser = functions.https.onRequest((request, response) => {
     firebaseAuth.signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             response.status(200).send({
-                message: "Successfully signed in",
+                message: messages.SIGNIN_SUCCESS,
                 user: userCredential.user
             });
         })
@@ -37,12 +38,13 @@ exports.signInEmailUser = functions.https.onRequest((request, response) => {
         });
 });
 
+// TODO: Currently broken
 exports.getUserInfo = functions.https.onRequest((request, response) => {
     firebaseAuth.onAuthStateChanged(auth, (user) => {
         if (user) {
             response.status(200).send({ user: user });
         } else {
-            response.status(400).send({ message: "No user signed in" });
+            response.status(400).send({ message: messages.NO_USER_SIGNED_IN });
         }
     });
 });
@@ -50,7 +52,7 @@ exports.getUserInfo = functions.https.onRequest((request, response) => {
 exports.signoutUser = functions.https.onRequest((request, response) => {
     firebaseAuth.signOut(auth)
         .then(() => {
-            response.status(200).send({ message: "Successfully signed out" });
+            response.status(200).send({ message: messages.SIGNOUT_SUCCESS });
         })
         .catch((error) => {
             const errorCode = error.code;
