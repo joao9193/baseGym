@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as firebaseAuth from "firebase/auth";
 import { app } from "../index";
-import * as messages from './messages.json';
+import * as messages from "./messages.json";
 
 const auth = firebaseAuth.getAuth(app);
 
@@ -38,7 +38,8 @@ exports.signInEmailUser = functions.https.onRequest((request, response) => {
         });
 });
 
-exports.getUserInfo = functions.https.onRequest((request, response) => { // TODO: Currently broken
+// TODO: Currently broken
+exports.getUserInfo = functions.https.onRequest((request, response) => {
     firebaseAuth.onAuthStateChanged(auth, (user) => {
         if (user) {
             response.status(200).send({ user: user });
