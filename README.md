@@ -18,13 +18,15 @@ run `npm install`
 ### Run the server
 Run `npm run serve`
 
-> Note: You may have to install firebase-tools globally to get serve to work `npm install -g firebase-tools`
+> You may have to install firebase-tools globally to get serve to work `npm install -g firebase-tools`
 
 ---
 
 ## Users API
 
 [See the Postman Documentation](https://documenter.getpostman.com/view/10044845/UzJFuHaX)
+
+> Because this is a personal project using GCP and Firebase, the URL's will not be made public as to not incure unnecessary costs. API documentation is purely for demonstration purposes
 
 ### Create Email User
 Endpoint: **POST** `/users-createEmailUser`
@@ -42,7 +44,7 @@ Example response:
 {
     "message": "Successfully created email user",
     "user": {
-        "uid": "yOQmOIet39QnZMx3rQvc5piMZ2t2",
+        "uid": "yOQm...",
         "email": "example@email.com",
         "emailVerified": false,
         "isAnonymous": false,
@@ -63,14 +65,14 @@ Example response:
         },
         "createdAt": "1656800460165",
         "lastLoginAt": "1656800460165",
-        "apiKey": "AIza...",
+        "apiKey": "AI...",
         "appName": "[DEFAULT]"
     }
 }
 ```
 
 ### Login Email User
-Endpoint: **POST** `/users-createEmailUser`
+Endpoint: **POST** `/users-signInEmailUser`
 
 Example body:
 ```
@@ -85,7 +87,7 @@ Example response:
 {
     "message": "Successfully created email user",
     "user": {
-        "uid": "yOQmOIet39QnZMx3rQvc5piMZ2t2",
+        "uid": "yOQm...",
         "email": "example@email.com",
         "emailVerified": false,
         "isAnonymous": false,
