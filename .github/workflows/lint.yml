@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 jobs:
-  run-linters:
-    name: Run linters
+  run-function-linters:
+    name: Run Function linters
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,13 @@ jobs:
 
       - name: Install Dependencies in ./functions
         run: cd ./functions && npm ci && npm run lint
+  run-public-linters:
+    name: Run Public linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies in ./public
+        run: cd ./public && npm ci && npm run lint
