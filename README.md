@@ -1,4 +1,4 @@
-# Welcome to my Workout App (name pending)
+# Welcome to Base Gym
 
 ## Quick Links
 
