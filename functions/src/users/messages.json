@@ -1,0 +1,6 @@
+{
+    "NO_USER_SIGNED_IN": "No user signed in",
+    "SIGNOUT_SUCCESS": "Successfully signed out",
+    "SIGNIN_SUCCESS": "Successfully signed in",
+    "EMAIL_USER_CREATE_SUCCESS": "Successfully created email user"
+}
